@@ -1,0 +1,43 @@
+{% extends "navbar.html" %}
+{% block head %}
+    {% load static %}
+    {% load comment_tags %}
+
+    <link rel="stylesheet" href="{% static 'star-ratings/css/star-ratings.css' %}">
+{% endblock %}
+{% block title %}{% endblock %}
+{% load ratings %}
+{% block content %}
+
+<div class="card" style="width: 18rem;">
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item">{{ name }}</li>
+        <li class="list-group-item">email is hidden</li>
+    </ul>
+</div>
+
+<div class="row row-cols-4 row-cols-md-5 g-4">
+    {% for object in objects %}
+        <div width="500px" height="500px" class="col">
+            <div class="card" style="width: 18rem;">
+                {% if product.photo.url > "" %}
+                    <img  src="{{ object.photo.url }}" class="card-img-top" alt="{{ object.photo.url }}">
+                {% endif %}
+                <div class="card-body">
+                    <h5 id="{{ object.product_name }}" class="card-title">{{ object.product_name }}</h5>
+                    <p class="card-text">{{ object.text }}</p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Ціна: {{ object.price }} грн</li>
+                </ul>
+                <div class="card-body">
+                    {{ product.id }}
+                    <a href="{{ product.id }}" class="btn btn-primary">Перейти</a>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+    {% ratings user %}
+    
+
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends "navbar.html" %}
+
+{% block title %}{% endblock %}
+{% block head %}
+    {% load static %}
+    {% load comment_tags %}
+
+    <link rel="stylesheet" href="{% static 'star-ratings/css/star-ratings.css' %}">
+{% endblock %}
+{% load ratings %}
+{% block content %}
+    
+    <div class="card mb-3" style="width: 100% ;height: 100%;">
+        <div class="row g-0">
+            <div class="col-md-4">
+                {% if product.photo.url > "" %}
+                    <img style="width: 100% ;height: 400px;" src="{{ product.photo.url }}" class="img-fluid rounded-start" alt="...">
+                {% endif %}
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h1 style="text-align: center" class="card-title">{{ product.product_name }}</h1>
+                    <a href="{% url 'order' product.id %}">
+                        <button class="btn btn-primary" type="button">добавити в корзину</button>
+                    </a>
+                    {% if request.user.is_authenticated and request.user.username == product.user.username %}
+                        <a href="../../../../delete/{{ product.id }}">
+                            <button type="submit" class="btn-close" aria-label="Close"></button>
+                        </a>
+                    {% endif %}
+                    <a href="{% url 'edit_product' product.id %}">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen" viewBox="0 0 16 16">
+                            <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001zm-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708l-1.585-1.585z"/>
+                        </svg>
+                    </a>
+                    <p class="card-text">Ціна: {{ product.price }}</p>
+                    <a href="../../../../../../user/{{ product.user }}">
+                        <p class="card-text">Продавець: {{ product.user }} </p>
+                    </a>
+                    <div style="width:200px;" class="shadow-lg p-3 mb-5 bg-body-tertiary rounded">
+                        <p class="card-text">{{ product.big_text }}</p>
+                    </div>
+                    {% ratings product %}
+                    {% render_comments product request %}
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

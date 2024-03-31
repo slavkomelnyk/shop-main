@@ -1,0 +1,31 @@
+{% extends "navbar.html" %}
+{% block content %}
+
+<div class="card" style="width: 18rem;">
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item"><a href="/../../../../basket/">basket</a></li>
+  </ul>
+</div>
+
+<h1>basket history</h1>
+
+{% for order in user_orders %}
+    <form method="post">
+      {% csrf_token %}
+      <input type="hidden" name="order_id" value="{{ order.id }}">
+      <!-- {{ form.as_p }} -->
+      <button type="submit">Update Status</button>
+    </form>
+    <p>Status: {{ order.status }}</p>
+    <ul>
+        {% for item in order.orderitem_set.all %}
+            <li>{{ item.product.product_name }} - Price: {{ item.product.price }} - Quantity: {{ item.quantity }}</li>
+        {% endfor %}
+    </ul>
+
+{% endfor %}
+{% endblock %}
+
+
+
+

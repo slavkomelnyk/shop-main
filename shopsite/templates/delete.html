@@ -1,0 +1,12 @@
+{% extends "navbar.html" %}
+
+{% block content %}
+  <h1>Delete Product</h1>
+  <p>Are you sure you want to delete the product "{{ product.product_name }}"?</p>
+
+  <form method="post">
+    {% csrf_token %}
+    <button type="submit">Yes, Delete</button>
+    <a href="{% url 'detail' product.id %}">No, Cancel</a>
+  </form>
+{% endblock %}

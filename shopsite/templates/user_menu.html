@@ -1,0 +1,39 @@
+
+{% extends "navbar.html" %}
+
+{% block title %}User Menu{% endblock %}
+
+{% block content %}
+    <div class="card" style="width: 18rem;">
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item"><a href="/../../../../create_product/">create_product</a></li>
+            <li class="list-group-item"><a href="../../../../../../user_menu/">user_menu</a></li>
+            <li class="list-group-item"><a href="../../../../user_orders/">user_orders</a></li>
+        </ul>
+    </div>
+    <div class="row row-cols-4 row-cols-md-5 g-4">
+        {% for object in objects %}
+            <div width="500px" height="500px" class="col">
+                <div class="card" style="width: 18rem;">
+                   
+                    <div class="card-body">
+                        <h5 class="card-title">{{ object.product_name }}</h5>
+                        <p class="card-text">{{ object.text }}</p>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Ціна: {{ object.price }} грн</li>
+                        <!-- <li class="list-group-item">Номер: {{ product.id }}</li> -->
+                    </ul>
+                    <div class="card-body">
+                        <a href="{% url 'detail' object.id %}" class="btn btn-primary">Перейти</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+
+
+    
+
+{% endblock %}

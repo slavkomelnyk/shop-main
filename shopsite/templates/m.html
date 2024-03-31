@@ -1,0 +1,152 @@
+{% extends "navbar.html" %}
+
+{% block title %}{% endblock %}
+
+{% block content %}
+<!--<script>-->
+<!--    function redirectToURL() {-->
+<!--        var inputText = document.getElementById("urlInput").value;-->
+<!--        if (inputText !== "") {-->
+<!--            window.location.href = "/static/Music/"+inputText;-->
+<!--        } else {-->
+<!--            alert("Please enter a URL.");-->
+<!--        }-->
+<!--    }-->
+<!--</script>-->
+<!--<h1 style="text-align: center;">/static/Music/‹Music name›</h1>-->
+
+<label for="urlInput">Enter Music:</label>
+<input type="text" id="urlInput">
+<button onclick="redirectToURL()">Go</button>
+<br>
+<script>
+function redirectToURL() {
+    var inputText = document.getElementById("urlInput").value;
+    var downloadLink = document.getElementById("downloadLink");
+
+    if (inputText !== "") {
+        var audioPlayer = document.getElementById("audioPlayer");
+        audioPlayer.src = "/static/Music/" + inputText;
+        downloadLink.href = "/static/Music/" + inputText;
+        downloadLink.style.display = "inline"; // Show download link
+    } else {
+        audioPlayer.src = ""; // Clear audio source if no input
+        downloadLink.style.display = "none"; // Hide download link
+    }
+}
+</script>
+
+<audio controls controlsList="nodownload" id="audioPlayer">
+  <source src="" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+<br><br>
+{% if user.is_authenticated %}
+    <a id="downloadLink" style="display: none;" download>Download</a>
+{% endif %}
+<br><br><br><br><br><br><br><br>
+
+03. How To Believe - Ruby Summer (Music Inspired By Tinkerbell).mp3<br>
+04. Let Your Heart Sing - Katherine McPhee (Music Inspired By Tinkerbell).mp3<br>
+08. Fly With Me - Kari Kimmell (Music Inspired By Tinkerbell).mp3<br>
+09. Wonder Of It All - Scottie Haskell (Music Inspired By Tinkerbell).mp3<br>
+2CELLOS - Hallelujah [OFFICIAL VIDEO].mp3<br>
+2CELLOS - Wake Me Up - Avicii [OFFICIAL VIDEO].mp3<br>
+Aladdin - A Whole New World [High Quality].mp3<br>
+All of Me - John Legend - Violin Cover by Karolina.mp3<br>
+Auli'i Cravalho - How Far I'll Go (from MoanaOfficial Video) (1).mp3<br>
+Auli'i Cravalho - How Far I'll Go (from MoanaOfficial Video).mp3<br>
+Avicii - Waiting For Love (PianoCello Cover) - Brooklyn Duo.mp3<br>
+Bali Relaxing Music.mp3<br>
+Billie Eilish - lovely (with Khalid) - Cello & Piano cover (Brooklyn Duo).mp3<br>
+Bridgit Mendler - How To Believe (From Tinker Bell And The Great Fairy Rescue).mp3<br>
+Brooklyn Duo - The Sound of Silence (Cello & Piano).mp3<br>
+CAN YOU FEEL THE LOVE TONIGHT CELLO COVER.mp3<br>
+Camila Cabello - Havana for cello and piano (COVER).mp3<br>
+Can't Help Falling In Love - Cello & Piano Cover (Brooklyn Duo).mp3<br>
+Canon in D (Pachelbel's Canon) - Cello & Piano [BEST WEDDING VERSION].mp3<br>
+Cast - Elena of Avalor - My Time (From Elena of Avalor).mp3<br>
+Charlie Puth - Attention [Official Video].mp3<br>
+Cheap Thrills - Sia Violin Cello Cover Ember Trio (1).mp3<br>
+Cheap Thrills - Sia Violin Cello Cover Ember Trio.mp3<br>
+Christina Perri - A Thousand Years (PianoCello Cover) (1).mp3<br>
+Christina Perri - A Thousand Years (PianoCello Cover).mp3<br>
+Coldplay - Hymn For The Weekend (Cello + Piano Cover) - Brooklyn Duo.mp3<br>
+Colors of the Wind (From Disney's Pocahontas) - Violin Cover - Taylor Davis.mp3<br>
+Dancing On My Own - Cello + Piano Cover (Brooklyn Duo).mp3<br>
+David Garrett - Viva La Vida.mp3<br>
+Demi Lovato - Let It Go (from Frozen) (Official Video).mp3<br>
+Demi Lovato - Tinkerbell - The Gift Of A Friend.mp3<br>
+Despacito - Karolina Protsenko - Violin Cover.mp3<br>
+Ed Sheeran - Photograph (PianoCello Cover) - Brooklyn Duo.mp3<br>
+FROZEN In Summer Song - Olaf Official Disney UK.mp3<br>
+Faded - Alan Walker - Karolina Protsenko (violin cover).mp3<br>
+Faith Hill - Fireflies.mp3<br>
+Fly to your heart - Selena Gomez from the animated picture Tinker Bell.mp3<br>
+Girls Like You - Maroon 5 (CELLO + PIANO COVER) - Brooklyn Duo.mp3<br>
+Girls Like You - Maroon 5 - Eduard Freixa Violin Cover.mp3<br>
+HALO - Beyoncé (2 Cellos & Piano) - Brooklyn Duo.mp3<br>
+Hakuna Matata - The Lion King (Ukulele Cover).mp3<br>
+How Far I'll Go (Disney's Moana) Violin Cover- Taylor Davis.mp3<br>
+I Just Can't Wait to Be King (from Disney's The Lion King) Violin Cover - Taylor Davis.mp3<br>
+I See the Light (from Disney's Tangled) Violin Cover - Taylor Davis.mp3<br>
+I'm With You - Avril Lavigne (electric violin cover) mrdanukw.mp3<br>
+Idina Menzel - Let It Go (from Frozen) (Official Video).mp3<br>
+John Legend - All of Me (PianoCello Cover) - Brooklyn Duo.mp3<br>
+Just the way you are - Bruno Mars - Violin cover by Karolina Protsenko.mp3<br>
+Let It Go (Disney's Frozen) Vivaldi's Winter - The Piano Guys.mp3<br>
+Lin-Manuel Miranda, Opetaia Foa'i - We Know The Way (From Moana).mp3
+Linkin Park - Numb (Cello + Piano Version).mp3<br>
+Love Story - Violin Cover by Karolina Protsenko.mp3<br>
+Mandy Moore - When Will My Life Begin (From TangledSing-Along).mp3<br>
+Maroon 5 - Memories (Fingerstyle Guitar Cover).mp3<br>
+McClain Sisters Great Divide Music Video from Disney's Secret of the Wings.mp3<br>
+Moana (How Far I'll Go) - Karolina Protsenko - Violin Cover At The Ocean.mp3<br>
+Moana - Where You Are [Ukrainian] Ваяна - Тільки тут.mp3<br>
+Moon River Violin+Cello+PianoBreakfast at Tiffany's OST.mp3<br>
+New Rules - Dua Lipa Violin Cello Cover Ember Trio.mp3<br>
+Nicholas Yee - Stitches (Shawn Mendes).mp3<br>
+One Direction - Drag Me Down (PianoCello Cover) - Brooklyn Duo.mp3<br><br>
+Owl City - When Can I See You Again (From Wreck it Ralph) (Official Music Video).mp3<br>
+PERFECT - Ed Sheeran + NEW BABY [Cello & Piano Cover] - Brooklyn Duo.mp3<br>
+PERFECT - Ed Sheeran - Violin Cover by Andre Soueid.mp3<br>
+River Flows in You - Cello & Piano Orchestral Version ft. David Solis & Yiruma.mp3<br>
+Sabrina Carpenter - Smile.mp3<br>
+See You Again - Wiz Khalifa (CelloPiano Cover) ft. Charlie Puth - Brooklyn Duo.mp3<br>
+Shakira - Try Everything (Official Video).mp3<br>
+Shallow - A Star is Born (CELLO & PIANO).mp3<br>
+Sia - Chandelier for violin and piano (COVER).mp3<br>
+Someone Like You Cover - Adele (CelloPiano) - Brooklyn Duo.mp3<br>
+Story of My Life (One Direction - PianoCello Cover) - The Piano Guys.mp3<br>
+Super DANCE MONKEY - Daniele Vitale Sax & Karolina Protsenko Violin.mp3<br>
+TANGLED - I See The Light [Official Movie Scene][HQ].mp3<br>
+Tangled - Something That I Want (HD).mp3<br>
+Taylor Swift - You Belong With Me.mp3<br>
+Thank you for loving me - Bon Jovi (Violin).mp3<br>
+The Jungle Book Sarabande (Mayan Style) - The Piano Guys (Wonder of the World 3 of 7).mp3<br><br>
+The Lion King OST Epic Medley Violin,Cello&Piano 라이온킹 메들리.mp3<br>
+Tinker BellThe Pirate Fairy Song'' Who I am by Natasha Bendingfield ''.mp3<br>
+TitaniumPavane (PianoCello Cover) - David GuettaFaure - The Piano Guys.mp3<br>
+What A Wonderful World - Piano + Cello Cover (Brooklyn Duo).mp3<br>
+When Stars and Salt collide - Coldplay, A Sky Full of Stars (pianocello cover)- The Piano Guys.mp3<br>
+Who Played It Better See You Again.mp3<br>
+Yellow - Coldplay (CELLO & PIANO) [Brooklyn Duo].mp3<br>
+Yiruma - River Flows In You (Marnie Laird of Brooklyn Duo).mp3<br>
+_!__пJohn Legend - All of Me (PianoCello Cover) - Brooklyn Duo 1.mp3<br>
+alyona-alyona_-_20-tonn.mp3<br>
+ringtone.m4a<br>
+ringtone2.m4a<br>
+ryk-lva.mp3<br>
+Все одно (Крижане серце) - Українська версія.mp3<br>
+Дім мій там, де ти (Вольт) - Український дубляж.mp3<br>
+Коло життя (Король Лев) - Український дубляж.mp3<br>
+Лети за мрією (Феї) - Український дубляж.mp3<br>
+Не відступлю (Зоотрополіс) - Український дубляж.mp3<br>
+Не те, що я бачу в снах Де ж воно, те життя (Рапунцель. Заплутана історія) - Український дубл.mp3<br>
+Світ змінився (Рапунцель. Заплутана історія) - Український дубляж.mp3<br>
+Серцем ти відчуй любов (Король Лев) - Український дубляж.mp3<br>
+Тільки повір (Феї Фантастичний порятунок) - Український дубляж.mp3<br>
+У цей чудовий день (Відважна) - Український дубляж.mp3<br>
+Хай бачить світ, якою я є (Феї Таємниця піратського острова) - Український дубляж.mp3<br>
+Ця далина (Ваяна Моана) - Український дубляж.mp3<br></p>
+{% endblock %}

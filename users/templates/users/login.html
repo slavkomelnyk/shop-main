@@ -1,0 +1,13 @@
+<-- users/templates/users/login.html -->
+{% load socialaccount %}
+{% block content %}
+    ...
+    <button class="btn btn-outline-info">
+        <a href="{% provider_login_url 'google'%}?next=/">
+            <i class="fab fa-google"></i>
+            <img src="{% static 'images/google.png' %}">
+            Login with Google
+        </a>
+    </button>
+    ...
+{% endblock content %}

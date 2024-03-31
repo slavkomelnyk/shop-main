@@ -1,0 +1,44 @@
+{% extends "navbar.html" %}
+
+{% block title %}ms{% endblock %}
+{% load static %}
+
+
+{% block content %}
+    <div class="container text-center ">
+        <div class="row">
+            <div class="col">
+                <div class="card" style="width: 100%;height: 100%;">
+                    <!-- <img style="width: 50px;height: 50px;" src="/{{ img }}" class="card-img-top user-select-none rounded-circle" alt="" > -->
+                    <div class="card-body">
+                        <h5 class="card-title user-select-none">{{ request.user }}</h5>
+                        {% for m in contact %}
+                            {% if m %}
+                                {{ m }}
+                                <img style="width: 50px; height: 50px;" src="{% static 'user_image/' %}{{ c.photo }}" class="user-select-none rounded-circle" alt="">
+                            {% endif %}
+                        {% endfor %}
+
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card" style="width: 100%;height: 100%;">
+                    <img src="..." class="card-img-top user-select-none" alt="" >
+                    <div class="card-body">
+                        <h5 class="card-title user-select-none">{{ user }}</h5>
+                        {% for m in text %}
+                        <br>{{ m }}
+                            
+                        {% endfor %}
+                        <!-- {{ text }} -->
+                    </div>
+                </div>
+            </div>
+            
+   
+        </div>
+    </div>
+
+{% endblock %}

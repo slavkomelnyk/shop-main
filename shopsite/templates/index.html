@@ -1,0 +1,47 @@
+{% extends "navbar.html" %}
+
+{% block title %}{% endblock %}
+
+{% block content %}
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+      
+        {% if latest_product_list %}
+            {% for product in latest_product_list %}
+                <div width="500px" height="500px" class="col">
+                    <div class="card" style="width: 18rem;">
+                        {% if product.photo.url > "" %}
+                            <img src="{{ product.photo }}" class="card-img-top" alt={{ product.product_name }}>
+                        {% endif %}
+                        <div class="card-body">
+                            <h5 class="card-title">{{ product.product_name }}</h5>
+                            <p class="card-text">{{ product.text }}</p>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Ціна: {{ product.price }} лір</li>
+                            <!-- <li class="list-group-item">Номер: {{ product.id }}</li> -->
+                        </ul>
+                        <div class="card-body">
+                            <a href="{{ product.id }}" class="btn btn-primary">Перейти</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        {% else %}
+            <div class="card" aria-hidden="true">
+                <div class="card-body">
+                    <h5 class="card-title placeholder-glow">
+                        <span class="placeholder col-6"></span>
+                    </h5>
+                    <p class="card-text placeholder-glow">
+                        <span class="placeholder col-7"></span>
+                        <span class="placeholder col-4"></span>
+                        <span class="placeholder col-4"></span>
+                        <span class="placeholder col-6"></span>
+                        <span class="placeholder col-8"></span>
+                    </p>
+                    <a class="btn btn-primary disabled placeholder col-6"></a>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}

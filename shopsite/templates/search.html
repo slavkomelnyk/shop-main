@@ -1,0 +1,30 @@
+{% extends "navbar.html" %}
+
+{% block title %}{% endblock %}
+
+{% block content %}
+
+    <div class="row row-cols-4 row-cols-md-5 g-4">
+        {% for object in objects %}
+            <div width="500px" height="500px" class="col">
+                <div class="card" style="width: 18rem;">
+                    {% if object.photo.url > "" %}
+                        <img src="{{ object.photo.url }}" class="card-img-top" alt={{ object.photo.url }}>
+                    {% endif %}
+                    <div class="card-body">
+                        <h5 class="card-title">{{ object.product_name }}</h5>
+                        <p class="card-text">{{ object.text }}</p>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Ціна: {{ object.price }} лір</li>
+                        <!-- <li class="list-group-item">Номер: {{ product.id }}</li> -->
+                    </ul>
+                    <div class="card-body">
+                        <a href="{% url 'detail' object.id %}" class="btn btn-primary">Перейти</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+{% endblock %}

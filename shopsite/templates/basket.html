@@ -1,0 +1,27 @@
+{% extends "navbar.html" %}
+{% block content %}
+  	<h1>Basket</h1>
+  	<a href="/order_buy"><p>Відправити корзину</p></a>
+	<a href="history"><p>history</p></a>
+
+  	{% for order in user_orders %}      
+
+    	<ul>
+      		{% for item in order.orderitem_set.all %}
+        		<li>
+					<p> 
+						<form method="post" action="{% url 'basket' %}">
+							{% csrf_token %}
+							<input type="hidden" name="product_id" value="{{ item.product.pk }}"></input>
+							<!-- {{ form }} -->
+						<p><a href="delete/{{ item.product.pk }}/"><button type="button" class="btn-close" aria-label="Close"></button></a>{{ item.product.product_name }} - Price: {{ item.product.price }} - Quantity:<input type="number" name="quantity" class="form-control" min="1" required="" id="id_quantity" value="{{ item.quantity }}"></p>
+							<button type="submit"></button>
+						</form>
+				
+					</p>
+					
+       			</li>
+      		{% endfor %}  
+    	</ul>
+  	{% endfor %}
+{% endblock %}
