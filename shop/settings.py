@@ -179,4 +179,4 @@ COMMENT_FLAG_REASONS = [
 COMMENT_PER_PAGE=5
 
 
-from .settings_local import *
+
